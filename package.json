@@ -1,0 +1,36 @@
+{
+    "name": "rn-menu",
+    "version": "0.0.1",
+    "description": "Showcase a Fabric Native Component with a menu",
+    "react-native": "js/index",
+    "source": "js/index",
+    "files": [
+      "js",
+      "android",
+      "ios",
+      "rn-menu.podspec",
+      "!android/build",
+      "!ios/build",
+      "!**/__tests__",
+      "!**/__fixtures__",
+      "!**/__mocks__"
+    ],
+    "keywords": ["react-native", "ios", "android"],
+    "repository": "https://github.com/kalyantm/rn-menu",
+    "author": "Kalyan TM madabhushi.kalyan@gmail.com (https://github.com/kalyantm)",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/kalyantm/rn-menu/issues"
+    },
+    "homepage": "https://github.com/kalyantm/rn-menu#readme",
+    "devDependencies": {},
+    "peerDependencies": {
+      "react": "*",
+      "react-native": "*"
+    },
+    "codegenConfig": {
+      "name": "RNMenuSpecs",
+      "type": "components",
+      "jsSrcsDir": "js"
+    }
+  }
