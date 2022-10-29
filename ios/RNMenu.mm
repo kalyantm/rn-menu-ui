@@ -24,7 +24,7 @@ using namespace facebook::react;
     if (_eventEmitter != nullptr) {
       
       std::dynamic_pointer_cast<const facebook::react::RNMenuEventEmitter>(_eventEmitter)
-          ->onPressAction(facebook::react::RNMenuEventEmitter::OnPressAction{.identifier = std::string([identifier UTF8String])});
+          ->onPressAction(facebook::react::RNMenuEventEmitter::OnPressAction{.id = std::string([identifier UTF8String])});
     }
 }
 + (ComponentDescriptorProvider)componentDescriptorProvider
@@ -37,18 +37,12 @@ using namespace facebook::react;
     if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const RNMenuProps>();
     _props = defaultProps;
-    _view = [[UIView alloc] init];
-    _view.backgroundColor = [UIColor redColor];
-     _actions = [[NSMutableArray alloc] init];
-      _button = [[UIButton alloc] init];
-      [_button setTitle:@"Initial Title" forState:UIControlStateNormal];
-      _button.backgroundColor = [UIColor blackColor];
-      [_button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-      [_button sizeToFit];
-      _button.showsMenuAsPrimaryAction = YES;
-      [_view addSubview:_button];
-      
-    self.contentView = _view;
+//    _view = [[UIView alloc] init];
+    _actions = [[NSMutableArray alloc] init];
+    _button = [[UIButton alloc] init];
+    _button.showsMenuAsPrimaryAction = YES;
+//     [_view addSubview:_button];
+     self.contentView = _button;
   }
 
   return self;
@@ -60,24 +54,36 @@ using namespace facebook::react;
   const auto &oldViewProps = *std::static_pointer_cast<RNMenuProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<RNMenuProps const>(props);
 
-  if (oldViewProps.title != newViewProps.title) {
-      [_button setTitle:[[NSString alloc] initWithCString:newViewProps.title.c_str() encoding:NSASCIIStringEncoding] forState:UIControlStateNormal];
-  }
-
-  if (oldViewProps.actions != newViewProps.actions) {
+    if (oldViewProps.actions.size() != newViewProps.actions.size()) {
+    // Init/update
+    [_actions removeAllObjects];
     for (auto act : newViewProps.actions) {
-      id newAction = [NSString stringWithUTF8String:act.c_str()];
-        [_actions addObject:[UIAction actionWithTitle:newAction image:nil identifier:newAction handler:^(__kindof UIAction* _Nonnull action) {[self notifyPressAction:newAction];}]];
-      }
-      
-      for (int i=0; i<[_actions count]; i++) {
-          NSLog(@"action:::%@", [_actions objectAtIndex:i]);
-      }
-      
-      _menu = [UIMenu menuWithTitle:@"" children:_actions];
-      _button.menu = _menu;
-      
+      id newActionId = [NSString stringWithUTF8String:act.id.c_str()];
+      id newActionTitle = [NSString stringWithUTF8String:act.title.c_str()];
+      id newActionImage = [NSString stringWithUTF8String:act.image.c_str()];
+      [_actions addObject:[UIAction actionWithTitle:newActionTitle image:[UIImage systemImageNamed:newActionImage] identifier:newActionId handler:^(__kindof UIAction* _Nonnull action) {
+          [self notifyPressAction:newActionId];
+        }
+      ]];
+        }
+    } else {
+        // Update
+        for (int i=0; i<newViewProps.actions.size(); i++) {
+            if (oldViewProps.actions[i].id != newViewProps.actions[i].id || oldViewProps.actions[i].title != newViewProps.actions[i].title || oldViewProps.actions[i].image != newViewProps.actions[i].image) {
+                id newActionId = [NSString stringWithUTF8String:newViewProps.actions[i].id.c_str()];
+                id newActionTitle = [NSString stringWithUTF8String:newViewProps.actions[i].title.c_str()];
+                id newActionImage = [NSString stringWithUTF8String:newViewProps.actions[i].image.c_str()];
+                [_actions replaceObjectAtIndex:i withObject:[UIAction actionWithTitle:newActionTitle image:[UIImage systemImageNamed:newActionImage] identifier:newActionId handler:^(__kindof UIAction* _Nonnull action) {
+                    [self notifyPressAction:newActionId];
+                }
+               ]];
+            }
+        }
     }
+    
+      
+    _menu = [UIMenu menuWithTitle:@"" children:_actions];
+    _button.menu = _menu;
 
   [super updateProps:props oldProps:oldProps];
 }
@@ -88,3 +94,4 @@ Class<RCTComponentViewProtocol> RNMenuCls(void)
 {
   return RNMenu.class;
 }
+

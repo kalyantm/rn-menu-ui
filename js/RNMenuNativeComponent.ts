@@ -1,20 +1,21 @@
 import type { ViewProps } from 'ViewPropTypes';
 import type { HostComponent } from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
-import { BubblingEventHandler } from 'react-native/Libraries/Types/CodegenTypes';
+import { BubblingEventHandler, WithDefault } from 'react-native/Libraries/Types/CodegenTypes';
 
-// type Action = Readonly<{
-//   identifier: string;
-//   title: string;
-// }>;
+type Action = Readonly<{
+  id: string;
+  title: string;
+  image?: string;
+  // TODO: Add subactions here
+}>;
 
-type Event = Readonly<{identifier: string}>;
+type Event = Readonly<{id: string}>;
 
 export interface NativeProps extends ViewProps {
-  text?: string;
-  title?: string;
-  onPressAction?: BubblingEventHandler<Event>;
-  actions?: ReadonlyArray<string>;
+  title: string;
+  onPressAction: BubblingEventHandler<Event>;
+  actions: ReadonlyArray<Action>;
 }
 
 export default codegenNativeComponent<NativeProps>(
