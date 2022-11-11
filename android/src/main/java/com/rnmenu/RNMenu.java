@@ -17,7 +17,8 @@ import android.widget.FrameLayout;
 import android.view.ContextMenu;
 import android.widget.Button;
 import android.view.View;
-
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -68,9 +69,8 @@ public class RNMenu extends FrameLayout {
     }
 
     private void configureComponent(Context context) {
-        this.setBackgroundColor(Color.parseColor("#FFFFFF"));
         Button menuButton = new Button(context);
-        menuButton.setText(this.title);
+        menuButton.setBackgroundResource(0);
         menuButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -83,7 +83,6 @@ public class RNMenu extends FrameLayout {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     onItemSelect(menuItem);
-                    Toast.makeText(context, "You clicked " + menuItem.getItemId(), Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });

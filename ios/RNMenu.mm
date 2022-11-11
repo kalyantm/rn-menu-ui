@@ -37,11 +37,11 @@ using namespace facebook::react;
     if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const RNMenuProps>();
     _props = defaultProps;
-//    _view = [[UIView alloc] init];
+   _view = [[UIView alloc] init];
     _actions = [[NSMutableArray alloc] init];
     _button = [[UIButton alloc] init];
     _button.showsMenuAsPrimaryAction = YES;
-//     [_view addSubview:_button];
+    [_view addSubview:_button];
      self.contentView = _button;
   }
 

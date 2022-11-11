@@ -48,12 +48,6 @@ public class RNMenuManager extends ViewGroupManager<RNMenu>
         return new RNMenu(context);
     }
 
-    // @Override
-    // @ReactProp(name = "text")
-    // public void setText(RNMenu view, @Nullable String text) {
-    //     // view.setText(text);
-    // }
-
     @Override
     @ReactProp(name = "title")
     public void setTitle(RNMenu view, @Nullable String title) {
