@@ -1,3 +1,3 @@
-import RNMenu from 'rn-menu/js/RNMenuNativeComponent';
+import RNMenu from 'rnmenu/js/RNMenuNativeComponent';
 
 export default RNMenu;
