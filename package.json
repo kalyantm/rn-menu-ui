@@ -5,32 +5,38 @@
     "react-native": "js/index",
     "source": "js/index",
     "files": [
-      "js",
-      "android",
-      "ios",
-      "rn-menu.podspec",
-      "!android/build",
-      "!ios/build",
-      "!**/__tests__",
-      "!**/__fixtures__",
-      "!**/__mocks__"
+        "js",
+        "android",
+        "ios",
+        "rn-menu.podspec",
+        "!android/build",
+        "!ios/build",
+        "!**/__tests__",
+        "!**/__fixtures__",
+        "!**/__mocks__"
     ],
-    "keywords": ["react-native", "ios", "android"],
+    "keywords": [
+        "react-native",
+        "ios",
+        "android"
+    ],
     "repository": "https://github.com/kalyantm/rn-menu",
     "author": "Kalyan TM madabhushi.kalyan@gmail.com (https://github.com/kalyantm)",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/kalyantm/rn-menu/issues"
+        "url": "https://github.com/kalyantm/rn-menu/issues"
     },
     "homepage": "https://github.com/kalyantm/rn-menu#readme",
-    "devDependencies": {},
+    "devDependencies": {
+        "metro-react-native-babel-preset": "^0.73.3"
+    },
     "peerDependencies": {
-      "react": "*",
-      "react-native": "*"
+        "react": "*",
+        "react-native": "*"
     },
     "codegenConfig": {
-      "name": "RNMenuSpecs",
-      "type": "components",
-      "jsSrcsDir": "js"
+        "name": "RNMenuSpecs",
+        "type": "components",
+        "jsSrcsDir": "js"
     }
-  }
+}
