@@ -6159,9 +6159,9 @@
   dependencies:
     "glob" "^7.1.3"
 
-"rnmenu@file:../rnmenu-0.0.1.tgz":
-  "integrity" "sha512-ntvveE3HTvN22PPCChlv10s0XyyuUZf6ozFMkezVP/5s076w9y/QYsq439OoJRj6EDhk59ib0Ssq/HlDX7g99g=="
-  "resolved" "file:../rnmenu-0.0.1.tgz"
+"rn-menu-ui@file:../rn-menu-ui-0.0.1.tgz":
+  "integrity" "sha512-0Mb+XMIBNfKwfC5KJgE9J0NdGYAlN0plECD1pj7iWM9kFrZ03z4BIWDARyKMhCqX0DKzqe9wk2P1lkE+uc6zHg=="
+  "resolved" "file:../rn-menu-ui-0.0.1.tgz"
   "version" "0.0.1"
 
 "rsvp@^4.8.4":
