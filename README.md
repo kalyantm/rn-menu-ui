@@ -30,5 +30,5 @@ onPressAction: (selectedId: string) => void;
 
 # TODO
 -[] Add types \
--[] Add support for `subactions` \ 
+-[] Add support for `subactions` \
 -[] Tests \ 
