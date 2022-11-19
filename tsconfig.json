@@ -1,11 +1,14 @@
 {
     "compilerOptions": {
+      "baseUrl": ".",
       "target": "es5",
       "module": "commonjs",
       "declaration": true,
-      "outDir": "./lib",
-      "strict": true
+      "outDir": "lib",
+      "strict": true,
+      "paths": {
+        "rn-menu-ui": ["./js/index"]
+      }
     },
-    "include": ["./js"],
-    "exclude": ["node_modules", "**/__tests__/*"]
+    "exclude": ["node_modules", "**/__tests__/*"],
   }

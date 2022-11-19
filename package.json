@@ -4,6 +4,7 @@
     "description": "Fabric native menu component",
     "react-native": "js/index",
     "source": "js/index",
+    "types": "lib/js/RNMenuNativeComponent.d.ts",
     "files": [
         "js",
         "android",
@@ -31,7 +32,8 @@
     },
     "homepage": "https://github.com/kalyantm/rn-menu-ui#readme",
     "devDependencies": {
-        "metro-react-native-babel-preset": "^0.73.3"
+        "metro-react-native-babel-preset": "^0.73.3",
+        "typescript": "^4.9.3"
     },
     "peerDependencies": {
         "react": "*",
