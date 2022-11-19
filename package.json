@@ -20,6 +20,9 @@
         "ios",
         "android"
     ],
+    "scripts": {
+        "build": "tsc"
+    },
     "repository": "https://github.com/kalyantm/rn-menu-ui",
     "author": "Kalyan TM madabhushi.kalyan@gmail.com (https://github.com/kalyantm)",
     "license": "MIT",
